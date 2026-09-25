@@ -1,0 +1,1542 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>AssureX - GTM Evaluation</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 20px;
+            background: #f5f7fa;
+        }
+
+        h1 {
+            color: #1f4e79;
+        }
+
+        .box {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+        }
+
+        button {
+            padding: 12px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 6px;
+            background: #1f73b7;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #155a8a;
+        }
+
+        #status {
+            white-space: pre-line;
+            background: #111;
+            color: #00ff66;
+            padding: 15px;
+            border-radius: 8px;
+            min-height: 100px;
+        }
+
+        .pass {
+            color: green;
+            font-weight: bold;
+        }
+
+        .fail {
+            color: red;
+            font-weight: bold;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 15px;
+            background: white;
+        }
+
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background: #eee;
+        }
+
+        .metric {
+            font-size: 18px;
+            margin: 8px 0;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>AssureX Claim Engine</h1>
+
+<div class="box">
+
+    <h2>1. GTM Model</h2>
+
+    <button onclick="loadModel()">
+        Load GTM Model
+    </button>
+
+    <p id="modelStatus">
+        Model not loaded.
+    </p>
+
+</div>
+
+
+<div class="box">
+
+    <h2>2. Dataset Split Check</h2>
+
+    <input
+        type="file"
+        id="trainCsv"
+        accept=".csv"
+    >
+
+    <br>
+
+    <input
+        type="file"
+        id="validationCsv"
+        accept=".csv"
+    >
+
+    <br>
+
+    <input
+        type="file"
+        id="testCsv"
+        accept=".csv"
+    >
+
+    <br>
+
+    <button onclick="checkDatasetSplit()">
+        Check 70 / 15 / 15 Split
+    </button>
+
+    <div id="splitResult"></div>
+
+</div>
+
+
+<div class="box">
+
+    <h2>3. Validation</h2>
+
+    <p>
+        CSV:
+    </p>
+
+    <input
+        type="file"
+        id="validationCsvEval"
+        accept=".csv"
+    >
+
+    <p>
+        Images folder:
+    </p>
+
+    <input
+        type="file"
+        id="validationImages"
+        webkitdirectory
+        directory
+        multiple
+    >
+
+    <br>
+
+    <button onclick="evaluateValidation()">
+        Evaluate Validation
+    </button>
+
+</div>
+
+
+<div class="box">
+
+    <h2>4. Test</h2>
+
+    <p>
+        CSV:
+    </p>
+
+    <input
+        type="file"
+        id="testCsvEval"
+        accept=".csv"
+    >
+
+    <p>
+        Images folder:
+    </p>
+
+    <input
+        type="file"
+        id="testImages"
+        webkitdirectory
+        directory
+        multiple
+    >
+
+    <br>
+
+    <button onclick="evaluateTest()">
+        Evaluate Test
+    </button>
+
+</div>
+
+
+<div class="box">
+
+    <h2>Status</h2>
+
+    <div id="status">
+Waiting...
+    </div>
+
+</div>
+
+
+<div class="box">
+
+    <h2>Results</h2>
+
+    <div id="results">
+No results yet.
+    </div>
+
+</div>
+
+
+<script>
+
+let model = null;
+
+const REQUIRED_RATIOS = {
+    train: 0.70,
+    validation: 0.15,
+    test: 0.15
+};
+
+
+// =====================================================
+// STATUS
+// =====================================================
+
+function log(message) {
+
+    const box =
+        document.getElementById("status");
+
+    box.textContent +=
+        "\n" + message;
+
+    box.scrollTop =
+        box.scrollHeight;
+}
+
+
+// =====================================================
+// LOAD MODEL
+// =====================================================
+
+async function loadModel() {
+
+    try {
+
+        log("Loading GTM model...");
+
+        const modelURL =
+            "./model/gtm_model/model.json";
+
+        const metadataURL =
+            "./model/gtm_model/metadata.json";
+
+        model =
+            await tmImage.load(
+                modelURL,
+                metadataURL
+            );
+
+        const labels =
+            model.getClassLabels();
+
+        document.getElementById(
+            "modelStatus"
+        ).innerHTML =
+            "<span class='pass'>" +
+            "Model loaded successfully." +
+            "</span><br>" +
+            "Classes: " +
+            labels.join(", ");
+
+        log(
+            "Model loaded successfully."
+        );
+
+        log(
+            "Classes: " +
+            labels.join(", ")
+        );
+
+    } catch (error) {
+
+        document.getElementById(
+            "modelStatus"
+        ).innerHTML =
+            "<span class='fail'>" +
+            "Model loading failed." +
+            "</span>";
+
+        log(
+            "ERROR: " + error
+        );
+    }
+}
+
+
+// =====================================================
+// READ CSV
+// =====================================================
+
+function readCSV(file) {
+
+    return new Promise(
+        (resolve, reject) => {
+
+            Papa.parse(
+                file,
+                {
+                    header: true,
+                    skipEmptyLines: true,
+
+                    complete: result => {
+                        resolve(result.data);
+                    },
+
+                    error: error => {
+                        reject(error);
+                    }
+                }
+            );
+
+        }
+    );
+}
+
+
+// =====================================================
+// DATASET SPLIT
+// =====================================================
+
+async function checkDatasetSplit() {
+
+    try {
+
+        const trainFile =
+            document.getElementById(
+                "trainCsv"
+            ).files[0];
+
+        const validationFile =
+            document.getElementById(
+                "validationCsv"
+            ).files[0];
+
+        const testFile =
+            document.getElementById(
+                "testCsv"
+            ).files[0];
+
+
+        if (
+            !trainFile ||
+            !validationFile ||
+            !testFile
+        ) {
+
+            alert(
+                "Please select all 3 CSV files."
+            );
+
+            return;
+        }
+
+
+        const train =
+            await readCSV(trainFile);
+
+        const validation =
+            await readCSV(validationFile);
+
+        const test =
+            await readCSV(testFile);
+
+
+        const trainCount =
+            train.length;
+
+        const validationCount =
+            validation.length;
+
+        const testCount =
+            test.length;
+
+
+        const total =
+            trainCount +
+            validationCount +
+            testCount;
+
+
+        const trainRatio =
+            trainCount / total;
+
+        const validationRatio =
+            validationCount / total;
+
+        const testRatio =
+            testCount / total;
+
+
+        const trainOK =
+            Math.abs(
+                trainRatio -
+                REQUIRED_RATIOS.train
+            ) < 0.001;
+
+
+        const validationOK =
+            Math.abs(
+                validationRatio -
+                REQUIRED_RATIOS.validation
+            ) < 0.001;
+
+
+        const testOK =
+            Math.abs(
+                testRatio -
+                REQUIRED_RATIOS.test
+            ) < 0.001;
+
+
+        const allOK =
+            trainOK &&
+            validationOK &&
+            testOK;
+
+
+        let html = "";
+
+        html +=
+            "<h3>Dataset Split</h3>";
+
+        html +=
+            "<table>";
+
+        html +=
+            "<tr>" +
+            "<th>Split</th>" +
+            "<th>Claims</th>" +
+            "<th>Actual %</th>" +
+            "<th>Required %</th>" +
+            "<th>Status</th>" +
+            "</tr>";
+
+
+        html += splitRow(
+            "Train",
+            trainCount,
+            trainRatio,
+            0.70,
+            trainOK
+        );
+
+        html += splitRow(
+            "Validation",
+            validationCount,
+            validationRatio,
+            0.15,
+            validationOK
+        );
+
+        html += splitRow(
+            "Test",
+            testCount,
+            testRatio,
+            0.15,
+            testOK
+        );
+
+
+        html +=
+            "</table>";
+
+
+        html +=
+            "<p><b>Total claims: " +
+            total +
+            "</b></p>";
+
+
+        if (allOK) {
+
+            html +=
+                "<p class='pass'>" +
+                "PASS - Dataset follows 70 / 15 / 15." +
+                "</p>";
+
+        } else {
+
+            html +=
+                "<p class='fail'>" +
+                "FAIL - Dataset split does not follow 70 / 15 / 15." +
+                "</p>";
+        }
+
+
+        document.getElementById(
+            "splitResult"
+        ).innerHTML = html;
+
+
+        log(
+            "Dataset split checked."
+        );
+
+        log(
+            "Total claims: " +
+            total
+        );
+
+    } catch (error) {
+
+        log(
+            "ERROR checking split: " +
+            error
+        );
+    }
+}
+
+
+function splitRow(
+    name,
+    count,
+    actual,
+    required,
+    pass
+) {
+
+    return `
+        <tr>
+            <td>${name}</td>
+            <td>${count}</td>
+            <td>${(actual * 100).toFixed(2)}%</td>
+            <td>${(required * 100).toFixed(2)}%</td>
+            <td class="${pass ? "pass" : "fail"}">
+                ${pass ? "PASS" : "FAIL"}
+            </td>
+        </tr>
+    `;
+}
+
+
+// =====================================================
+// CLAIM ID
+// =====================================================
+
+function getClaimID(filename) {
+
+    const name =
+        filename
+            .split("/")
+            .pop();
+
+    return name.replace(
+        /_v\d+\.png$/i,
+        ""
+    );
+}
+
+
+// =====================================================
+// IMAGE
+// =====================================================
+
+function createImage(file) {
+
+    return new Promise(
+        (resolve, reject) => {
+
+            const image =
+                new Image();
+
+            const url =
+                URL.createObjectURL(file);
+
+            image.onload = () => {
+
+                URL.revokeObjectURL(url);
+
+                resolve(image);
+            };
+
+            image.onerror = () => {
+
+                URL.revokeObjectURL(url);
+
+                reject(
+                    new Error(
+                        "Cannot load " +
+                        file.name
+                    )
+                );
+            };
+
+            image.src = url;
+        }
+    );
+}
+
+
+// =====================================================
+// EVALUATE
+// =====================================================
+
+async function evaluateDataset(
+    csvFile,
+    imageFiles,
+    datasetName
+) {
+
+    if (!model) {
+
+        alert(
+            "Please load GTM model first."
+        );
+
+        return;
+    }
+
+
+    if (!csvFile) {
+
+        alert(
+            "Please select CSV."
+        );
+
+        return;
+    }
+
+
+    if (
+        !imageFiles ||
+        imageFiles.length === 0
+    ) {
+
+        alert(
+            "Please select image folder."
+        );
+
+        return;
+    }
+
+
+    log("");
+    log(
+        "================================"
+    );
+
+    log(
+        "Evaluating " +
+        datasetName
+    );
+
+    log(
+        "================================"
+    );
+
+
+    const rows =
+        await readCSV(csvFile);
+
+
+    const totalClaims =
+        rows.length;
+
+    if (!totalClaims) {
+        throw new Error(
+            datasetName +
+            " CSV contains no claims."
+        );
+    }
+
+
+    log(
+        "Claims in CSV: " +
+        totalClaims
+    );
+
+
+    const groundTruth =
+        new Map();
+
+
+    rows.forEach(row => {
+
+        const claimID = String(
+            row.ClaimID || ""
+        ).trim();
+
+        const claimClass = String(
+            row.ClaimClass || ""
+        ).trim();
+
+        if (!claimID || !claimClass) {
+            throw new Error(
+                datasetName +
+                " CSV contains a row without ClaimID or ClaimClass."
+            );
+        }
+
+        if (groundTruth.has(claimID)) {
+            throw new Error(
+                datasetName +
+                " CSV contains duplicate ClaimID: " +
+                claimID
+            );
+        }
+
+        groundTruth.set(
+            claimID,
+            claimClass
+        );
+
+    });
+
+
+    const imageMap =
+        new Map();
+
+
+    for (
+        const file
+        of imageFiles
+    ) {
+
+        if (
+            !file.name
+                .toLowerCase()
+                .endsWith(".png")
+        ) {
+            continue;
+        }
+
+
+        const claimID =
+            getClaimID(file.name);
+
+
+        if (
+            groundTruth.has(
+                claimID
+            )
+        ) {
+
+            imageMap.set(
+                claimID,
+                file
+            );
+
+        }
+    }
+
+
+    const matched =
+        imageMap.size;
+
+
+    log(
+        "Matched images: " +
+        matched +
+        "/" +
+        totalClaims
+    );
+
+
+    if (matched !== totalClaims) {
+        throw new Error(
+            datasetName +
+            " evaluation stopped: " +
+            matched +
+            "/" +
+            totalClaims +
+            " claims have matching images."
+        );
+    }
+
+
+    const results = [];
+
+
+    let processed = 0;
+
+
+    for (
+        const [
+            claimID,
+            actual
+        ]
+        of groundTruth
+    ) {
+
+        const file =
+            imageMap.get(
+                claimID
+            );
+
+
+        if (!file) {
+            throw new Error(
+                "Missing image for ClaimID: " +
+                claimID
+            );
+        }
+
+
+        const image =
+            await createImage(
+                file
+            );
+
+
+        const predictions =
+            await model.predict(
+                image
+            );
+
+
+        let best =
+            predictions[0];
+
+
+        for (
+            const prediction
+            of predictions
+        ) {
+
+            if (
+                prediction.probability >
+                best.probability
+            ) {
+
+                best =
+                    prediction;
+            }
+        }
+
+
+        results.push({
+
+            ClaimID:
+                claimID,
+
+            ActualClass:
+                actual,
+
+            PredictedClass:
+                best.className,
+
+            Confidence:
+                best.probability,
+
+            Correct:
+                actual ===
+                best.className
+
+        });
+
+
+        processed++;
+
+
+        if (
+            processed % 25 === 0 ||
+            processed === matched
+        ) {
+
+            log(
+                "Progress: " +
+                processed +
+                "/" +
+                matched
+            );
+        }
+    }
+
+
+    const metrics =
+        calculateMetrics(
+            results
+        );
+
+    if (results.length !== totalClaims) {
+        throw new Error(
+            datasetName +
+            " evaluation produced " +
+            results.length +
+            " results for " +
+            totalClaims +
+            " claims."
+        );
+    }
+
+
+    displayResults(
+        datasetName,
+        metrics
+    );
+
+
+    const prefix =
+        datasetName
+            .toLowerCase();
+
+
+    downloadCSV(
+        results,
+        prefix +
+        "_predictions.csv"
+    );
+
+
+    downloadCSV(
+        metrics.confusionMatrix,
+        prefix +
+        "_confusion_matrix.csv"
+    );
+
+    log(
+        "Exported: " +
+        prefix +
+        "_predictions.csv and " +
+        prefix +
+        "_confusion_matrix.csv"
+    );
+
+
+    log(
+        datasetName +
+        " evaluation completed."
+    );
+}
+
+
+// =====================================================
+// METRICS
+// =====================================================
+
+function calculateMetrics(
+    results
+) {
+
+    const labels = [
+        "Valid Claim",
+        "Invalid Claim",
+        "Manual Review"
+    ];
+
+
+    let correct = 0;
+
+
+    results.forEach(
+        row => {
+
+            if (
+                row.Correct
+            ) {
+
+                correct++;
+            }
+        }
+    );
+
+
+    const accuracy =
+        results.length
+            ? correct /
+              results.length
+            : 0;
+
+
+    const matrix = {};
+
+
+    labels.forEach(
+        actual => {
+
+            matrix[actual] = {};
+
+            labels.forEach(
+                predicted => {
+
+                    matrix[
+                        actual
+                    ][
+                        predicted
+                    ] = 0;
+                }
+            );
+        }
+    );
+
+
+    results.forEach(
+        row => {
+
+            if (
+                matrix[
+                    row.ActualClass
+                ] &&
+                matrix[
+                    row.ActualClass
+                ][
+                    row.PredictedClass
+                ] !== undefined
+            ) {
+
+                matrix[
+                    row.ActualClass
+                ][
+                    row.PredictedClass
+                ]++;
+            }
+        }
+    );
+
+
+    const perClass = [];
+
+
+    labels.forEach(
+        label => {
+
+            const TP =
+                matrix[
+                    label
+                ][
+                    label
+                ];
+
+
+            let FP = 0;
+            let FN = 0;
+
+
+            labels.forEach(
+                other => {
+
+                    if (
+                        other !== label
+                    ) {
+
+                        FP +=
+                            matrix[
+                                other
+                            ][
+                                label
+                            ];
+
+                        FN +=
+                            matrix[
+                                label
+                            ][
+                                other
+                            ];
+                    }
+                }
+            );
+
+
+            const precision =
+                TP + FP
+                    ? TP /
+                      (TP + FP)
+                    : 0;
+
+
+            const recall =
+                TP + FN
+                    ? TP /
+                      (TP + FN)
+                    : 0;
+
+
+            const f1 =
+                precision +
+                recall
+                    ? 2 *
+                      precision *
+                      recall /
+                      (
+                          precision +
+                          recall
+                      )
+                    : 0;
+
+
+            const support =
+                results.filter(
+                    row =>
+                        row.ActualClass ===
+                        label
+                ).length;
+
+
+            perClass.push({
+
+                Class:
+                    label,
+
+                Precision:
+                    precision,
+
+                Recall:
+                    recall,
+
+                F1:
+                    f1,
+
+                Support:
+                    support
+            });
+        }
+    );
+
+
+    const macroPrecision =
+        perClass.reduce(
+            (sum, row) =>
+                sum +
+                row.Precision,
+            0
+        ) /
+        labels.length;
+
+
+    const macroRecall =
+        perClass.reduce(
+            (sum, row) =>
+                sum +
+                row.Recall,
+            0
+        ) /
+        labels.length;
+
+
+    const macroF1 =
+        perClass.reduce(
+            (sum, row) =>
+                sum +
+                row.F1,
+            0
+        ) /
+        labels.length;
+
+
+    const confusionMatrix = [];
+
+
+    labels.forEach(
+        actual => {
+
+            labels.forEach(
+                predicted => {
+
+                    confusionMatrix.push({
+
+                        ActualClass:
+                            actual,
+
+                        PredictedClass:
+                            predicted,
+
+                        Count:
+                            matrix[
+                                actual
+                            ][
+                                predicted
+                            ]
+                    });
+                }
+            );
+        }
+    );
+
+
+    return {
+
+        Accuracy:
+            accuracy,
+
+        Precision:
+            macroPrecision,
+
+        Recall:
+            macroRecall,
+
+        F1:
+            macroF1,
+
+        PerClass:
+            perClass,
+
+        confusionMatrix:
+            confusionMatrix
+    };
+}
+
+
+// =====================================================
+// DISPLAY
+// =====================================================
+
+function displayResults(
+    datasetName,
+    metrics
+) {
+
+    let html = "";
+
+
+    html +=
+        "<h2>" +
+        datasetName +
+        "</h2>";
+
+
+    html +=
+        metric(
+            "Accuracy",
+            metrics.Accuracy
+        );
+
+
+    html +=
+        metric(
+            "Macro Precision",
+            metrics.Precision
+        );
+
+
+    html +=
+        metric(
+            "Macro Recall",
+            metrics.Recall
+        );
+
+
+    html +=
+        metric(
+            "Macro F1",
+            metrics.F1
+        );
+
+
+    html +=
+        "<h3>Per-Class Metrics</h3>";
+
+
+    html +=
+        "<table>";
+
+    html +=
+        "<tr>" +
+        "<th>Class</th>" +
+        "<th>Precision</th>" +
+        "<th>Recall</th>" +
+        "<th>F1</th>" +
+        "<th>Support</th>" +
+        "</tr>";
+
+
+    metrics.PerClass.forEach(
+        row => {
+
+            html +=
+                "<tr>" +
+
+                "<td>" +
+                row.Class +
+                "</td>" +
+
+                "<td>" +
+                percent(
+                    row.Precision
+                ) +
+                "</td>" +
+
+                "<td>" +
+                percent(
+                    row.Recall
+                ) +
+                "</td>" +
+
+                "<td>" +
+                percent(
+                    row.F1
+                ) +
+                "</td>" +
+
+                "<td>" +
+                row.Support +
+                "</td>" +
+
+                "</tr>";
+        }
+    );
+
+
+    html +=
+        "</table>";
+
+
+    html +=
+        "<h3>Confusion Matrix</h3>";
+
+
+    html +=
+        "<table>";
+
+
+    html +=
+        "<tr>" +
+        "<th>Actual / Predicted</th>" +
+        "<th>Valid Claim</th>" +
+        "<th>Invalid Claim</th>" +
+        "<th>Manual Review</th>" +
+        "</tr>";
+
+
+    const labels = [
+        "Valid Claim",
+        "Invalid Claim",
+        "Manual Review"
+    ];
+
+
+    labels.forEach(
+        actual => {
+
+            html +=
+                "<tr>";
+
+            html +=
+                "<th>" +
+                actual +
+                "</th>";
+
+
+            labels.forEach(
+                predicted => {
+
+                    const item =
+                        metrics
+                            .confusionMatrix
+                            .find(
+                                x =>
+                                    x.ActualClass ===
+                                    actual &&
+                                    x.PredictedClass ===
+                                    predicted
+                            );
+
+
+                    html +=
+                        "<td>" +
+                        (
+                            item
+                                ? item.Count
+                                : 0
+                        ) +
+                        "</td>";
+                }
+            );
+
+
+            html +=
+                "</tr>";
+        }
+    );
+
+
+    html +=
+        "</table>";
+
+
+    document.getElementById(
+        "results"
+    ).innerHTML = html;
+}
+
+
+function metric(
+    name,
+    value
+) {
+
+    return `
+        <div class="metric">
+            ${name}:
+            <b>${percent(value)}</b>
+        </div>
+    `;
+}
+
+
+function percent(value) {
+
+    return (
+        value * 100
+    ).toFixed(2) + "%";
+}
+
+
+// =====================================================
+// DOWNLOAD
+// =====================================================
+
+function downloadCSV(
+    data,
+    filename
+) {
+
+    const csv =
+        Papa.unparse(
+            data
+        );
+
+
+    const blob =
+        new Blob(
+            [csv],
+            {
+                type:
+                    "text/csv;charset=utf-8;"
+            }
+        );
+
+
+    const url =
+        URL.createObjectURL(
+            blob
+        );
+
+
+    const link =
+        document.createElement(
+            "a"
+        );
+
+
+    link.href = url;
+
+    link.download =
+        filename;
+
+    document.body.appendChild(
+        link
+    );
+
+    link.click();
+
+    document.body.removeChild(
+        link
+    );
+
+    URL.revokeObjectURL(
+        url
+    );
+}
+
+
+// =====================================================
+// BUTTONS
+// =====================================================
+
+async function evaluateValidation() {
+
+    const csv =
+        document.getElementById(
+            "validationCsvEval"
+        ).files[0];
+
+
+    const images =
+        document.getElementById(
+            "validationImages"
+        ).files;
+
+
+    await evaluateDataset(
+        csv,
+        images,
+        "Validation"
+    );
+}
+
+
+async function evaluateTest() {
+
+    const csv =
+        document.getElementById(
+            "testCsvEval"
+        ).files[0];
+
+
+    const images =
+        document.getElementById(
+            "testImages"
+        ).files;
+
+
+    await evaluateDataset(
+        csv,
+        images,
+        "Test"
+    );
+}
+
+</script>
+
+</body>
+</html>

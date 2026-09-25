@@ -1,0 +1,9 @@
+﻿Metric,Value
+Total Records,1500
+Valid Claim,500
+Invalid Claim,500
+Manual Review,500
+Training Records,1050
+Validation Records,225
+Testing Records,225
+Unique Claim IDs,1500

@@ -1,0 +1,4 @@
+﻿,Valid Claim,Invalid Claim,Manual Review
+Valid Claim,75,0,0
+Invalid Claim,0,75,0
+Manual Review,0,0,75

@@ -1,0 +1,17 @@
+﻿Metric,Category,Count
+FinalDecision,Valid Claim,75.0
+FinalDecision,Manual Review,75.0
+FinalDecision,Invalid Claim,75.0
+DecisionReason,Missing required documents,102.0
+DecisionReason,Serial number verification issue,17.0
+DecisionReason,Serial number mismatch,11.0
+DecisionReason,Unauthorized repair,22.0
+DecisionReason,Repair authorization issue,16.0
+DecisionReason,Claim contradiction,15.0
+DecisionReason,Product/model inconsistency,13.0
+DecisionReason,Duplicate claim,14.0
+DecisionReason,Warranty expired,16.0
+DecisionReason,Fault not covered,10.0
+DecisionReason,Duplicate document warning,14.0
+DecisionReason,Low ML confidence,1.0
+FinalAccuracy,All Test Claims,0.9288888888888889

@@ -1,0 +1,226 @@
+﻿ClaimID,MLPrediction,MLConfidence,FinalDecision,RuleTriggered,DecisionReasons,ActualClass
+CLM00378,Valid Claim,0.9911,Valid Claim,No,,Valid Claim
+CLM01286,Manual Review,0.9873,Manual Review,Yes,Missing required documents; Serial number verification issue,Manual Review
+CLM00707,Invalid Claim,0.9299,Invalid Claim,Yes,Serial number mismatch; Missing required documents,Invalid Claim
+CLM00984,Invalid Claim,0.9797,Invalid Claim,Yes,Unauthorized repair,Invalid Claim
+CLM00473,Valid Claim,0.9884,Valid Claim,No,,Valid Claim
+CLM01299,Manual Review,0.9916,Manual Review,Yes,Missing required documents; Repair authorization issue,Manual Review
+CLM01224,Manual Review,0.9896,Manual Review,Yes,Claim contradiction; Product/model inconsistency,Manual Review
+CLM01173,Manual Review,0.9903,Manual Review,Yes,Missing required documents; Repair authorization issue,Manual Review
+CLM00966,Invalid Claim,0.9986,Invalid Claim,Yes,Unauthorized repair; Missing required documents,Invalid Claim
+CLM01335,Manual Review,0.9929,Manual Review,Yes,Missing required documents; Repair authorization issue,Manual Review
+CLM00353,Valid Claim,0.9585,Valid Claim,No,,Valid Claim
+CLM01001,Manual Review,0.9515,Manual Review,Yes,Missing required documents,Manual Review
+CLM00131,Valid Claim,0.9911,Valid Claim,No,,Valid Claim
+CLM00092,Valid Claim,0.9925,Valid Claim,No,,Valid Claim
+CLM01494,Manual Review,0.9933,Manual Review,Yes,Missing required documents; Claim contradiction; Product/model inconsistency,Manual Review
+CLM00973,Invalid Claim,0.9922,Invalid Claim,No,,Invalid Claim
+CLM01416,Manual Review,0.992,Manual Review,Yes,Missing required documents; Claim contradiction; Product/model inconsistency,Manual Review
+CLM01004,Manual Review,0.9911,Manual Review,Yes,Missing required documents; Serial number verification issue,Manual Review
+CLM00835,Invalid Claim,0.9851,Manual Review,Yes,Missing required documents,Invalid Claim
+CLM00799,Invalid Claim,0.9683,Manual Review,Yes,Missing required documents,Invalid Claim
+CLM00346,Valid Claim,0.9763,Valid Claim,No,,Valid Claim
+CLM01169,Manual Review,0.924,Invalid Claim,Yes,Duplicate claim; Missing required documents,Manual Review
+CLM00151,Valid Claim,0.9907,Valid Claim,No,,Valid Claim
+CLM00957,Invalid Claim,0.9938,Invalid Claim,Yes,Warranty expired,Invalid Claim
+CLM00511,Invalid Claim,0.9871,Invalid Claim,No,,Invalid Claim
+CLM00060,Valid Claim,0.9907,Valid Claim,No,,Valid Claim
+CLM01106,Manual Review,0.9861,Manual Review,Yes,Missing required documents; Serial number verification issue,Manual Review
+CLM01401,Manual Review,0.9889,Manual Review,Yes,Missing required documents; Repair authorization issue,Manual Review
+CLM00673,Invalid Claim,0.98,Manual Review,Yes,Missing required documents,Invalid Claim
+CLM00418,Valid Claim,0.9869,Valid Claim,No,,Valid Claim
+CLM00286,Valid Claim,0.9905,Valid Claim,No,,Valid Claim
+CLM00074,Valid Claim,0.9911,Valid Claim,No,,Valid Claim
+CLM00484,Valid Claim,0.972,Valid Claim,No,,Valid Claim
+CLM01473,Manual Review,0.9951,Manual Review,Yes,Missing required documents; Repair authorization issue,Manual Review
+CLM01156,Manual Review,0.9626,Manual Review,Yes,Missing required documents,Manual Review
+CLM00627,Invalid Claim,0.9437,Invalid Claim,Yes,Warranty expired; Product/model inconsistency,Invalid Claim
+CLM00792,Invalid Claim,0.9938,Invalid Claim,Yes,Unauthorized repair; Missing required documents,Invalid Claim
+CLM00459,Valid Claim,0.9911,Valid Claim,No,,Valid Claim
+CLM00210,Valid Claim,0.9912,Valid Claim,No,,Valid Claim
+CLM00031,Valid Claim,0.9909,Valid Claim,No,,Valid Claim
+CLM00066,Valid Claim,0.9925,Valid Claim,No,,Valid Claim
+CLM00831,Invalid Claim,0.9899,Invalid Claim,Yes,Warranty expired; Missing required documents,Invalid Claim
+CLM01207,Manual Review,0.9886,Manual Review,No,,Manual Review
+CLM00207,Valid Claim,0.9907,Valid Claim,No,,Valid Claim
+CLM01037,Manual Review,0.9694,Manual Review,Yes,Missing required documents,Manual Review
+CLM00419,Valid Claim,0.9912,Valid Claim,No,,Valid Claim
+CLM00351,Valid Claim,0.9929,Valid Claim,No,,Valid Claim
+CLM00169,Valid Claim,0.9952,Valid Claim,No,,Valid Claim
+CLM01127,Manual Review,0.9809,Manual Review,Yes,Missing required documents,Manual Review
+CLM00307,Valid Claim,0.9926,Valid Claim,No,,Valid Claim
+CLM00501,Invalid Claim,0.9899,Invalid Claim,Yes,Warranty expired; Missing required documents,Invalid Claim
+CLM01194,Manual Review,0.9945,Manual Review,Yes,Claim contradiction; Product/model inconsistency,Manual Review
+CLM00110,Valid Claim,0.9904,Valid Claim,No,,Valid Claim
+CLM00194,Valid Claim,0.9762,Valid Claim,No,,Valid Claim
+CLM00994,Invalid Claim,0.9663,Invalid Claim,Yes,Fault not covered; Missing required documents,Invalid Claim
+CLM00469,Valid Claim,0.9926,Valid Claim,No,,Valid Claim
+CLM00406,Valid Claim,0.9912,Valid Claim,No,,Valid Claim
+CLM00724,Invalid Claim,0.9817,Invalid Claim,Yes,Fault not covered; Missing required documents,Invalid Claim
+CLM01378,Manual Review,0.9788,Manual Review,Yes,Missing required documents,Manual Review
+CLM00918,Invalid Claim,0.9982,Invalid Claim,Yes,Unauthorized repair; Missing required documents,Invalid Claim
+CLM00008,Valid Claim,0.9926,Valid Claim,No,,Valid Claim
+CLM01241,Manual Review,0.9788,Manual Review,Yes,Missing required documents,Manual Review
+CLM00641,Invalid Claim,0.9983,Invalid Claim,Yes,Serial number mismatch; Duplicate document warning,Invalid Claim
+CLM00746,Invalid Claim,0.8605,Invalid Claim,Yes,Duplicate claim; Missing required documents; Duplicate document warning,Invalid Claim
+CLM01113,Manual Review,0.9829,Manual Review,Yes,Missing required documents; Repair authorization issue,Manual Review
+CLM01076,Manual Review,0.9879,Manual Review,Yes,Missing required documents; Serial number verification issue,Manual Review
+CLM00037,Valid Claim,0.9912,Valid Claim,No,,Valid Claim
+CLM01457,Manual Review,0.9835,Manual Review,Yes,Missing required documents; Product/model inconsistency,Manual Review
+CLM01346,Manual Review,0.9837,Manual Review,Yes,Missing required documents; Serial number verification issue,Manual Review
+CLM00531,Invalid Claim,0.9927,Invalid Claim,Yes,Warranty expired,Invalid Claim
+CLM00882,Invalid Claim,0.6054,Invalid Claim,Yes,Unauthorized repair; Missing required documents,Invalid Claim
+CLM01406,Manual Review,0.99,Manual Review,Yes,Missing required documents; Serial number verification issue,Manual Review
+CLM01092,Manual Review,0.9578,Manual Review,Yes,Claim contradiction; Product/model inconsistency,Manual Review
+CLM01131,Manual Review,0.9895,Manual Review,Yes,Missing required documents; Repair authorization issue,Manual Review
+CLM00452,Valid Claim,0.9895,Valid Claim,No,,Valid Claim
+CLM01280,Manual Review,0.9937,Manual Review,Yes,Missing required documents; Serial number verification issue,Manual Review
+CLM00606,Invalid Claim,0.9794,Invalid Claim,Yes,Unauthorized repair,Invalid Claim
+CLM01307,Manual Review,0.9555,Manual Review,Yes,Missing required documents,Manual Review
+CLM01246,Manual Review,0.9353,Manual Review,Yes,Missing required documents,Manual Review
+CLM00525,Invalid Claim,0.9783,Invalid Claim,Yes,Warranty expired,Invalid Claim
+CLM00853,Invalid Claim,0.9854,Invalid Claim,No,,Invalid Claim
+CLM01373,Manual Review,0.6596,Invalid Claim,Yes,Unauthorized repair; Missing required documents,Manual Review
+CLM00025,Valid Claim,0.9907,Valid Claim,No,,Valid Claim
+CLM00969,Invalid Claim,0.9994,Invalid Claim,Yes,Warranty expired; Serial number mismatch,Invalid Claim
+CLM00067,Valid Claim,0.9912,Valid Claim,No,,Valid Claim
+CLM01066,Manual Review,0.9672,Manual Review,Yes,Missing required documents,Manual Review
+CLM00861,Invalid Claim,0.9429,Invalid Claim,Yes,Warranty expired,Invalid Claim
+CLM00710,Invalid Claim,0.9975,Invalid Claim,Yes,Duplicate claim; Missing required documents; Duplicate document warning,Invalid Claim
+CLM01351,Manual Review,0.984,Manual Review,Yes,Duplicate document warning,Manual Review
+CLM01151,Manual Review,0.972,Manual Review,Yes,Missing required documents,Manual Review
+CLM00106,Valid Claim,0.9926,Valid Claim,No,,Valid Claim
+CLM00574,Invalid Claim,0.9947,Invalid Claim,Yes,Fault not covered,Invalid Claim
+CLM01361,Manual Review,0.9661,Manual Review,Yes,Missing required documents,Manual Review
+CLM00156,Valid Claim,0.9924,Valid Claim,No,,Valid Claim
+CLM00786,Invalid Claim,0.9476,Invalid Claim,Yes,Unauthorized repair,Invalid Claim
+CLM01409,Manual Review,0.9413,Manual Review,Yes,Missing required documents,Manual Review
+CLM01069,Manual Review,0.9176,Invalid Claim,Yes,Unauthorized repair,Manual Review
+CLM00952,Invalid Claim,0.9941,Invalid Claim,Yes,Fault not covered,Invalid Claim
+CLM00858,Invalid Claim,0.9541,Invalid Claim,Yes,Unauthorized repair,Invalid Claim
+CLM01466,Manual Review,0.9917,Manual Review,Yes,Missing required documents; Serial number verification issue,Manual Review
+CLM01418,Manual Review,0.9903,Manual Review,Yes,Missing required documents; Serial number verification issue,Manual Review
+CLM01275,Manual Review,0.8937,Invalid Claim,Yes,Serial number mismatch; Missing required documents; Claim contradiction; Repair authorization issue,Manual Review
+CLM01342,Manual Review,0.5253,Invalid Claim,Yes,Unauthorized repair; Low ML confidence; Missing required documents,Manual Review
+CLM00906,Invalid Claim,0.9977,Invalid Claim,Yes,Unauthorized repair,Invalid Claim
+CLM00656,Invalid Claim,0.9867,Invalid Claim,Yes,Duplicate claim; Duplicate document warning,Invalid Claim
+CLM01331,Manual Review,0.9749,Manual Review,Yes,Missing required documents,Manual Review
+CLM01210,Manual Review,0.9676,Manual Review,Yes,Missing required documents,Manual Review
+CLM00860,Invalid Claim,0.9986,Invalid Claim,Yes,Duplicate claim; Missing required documents; Duplicate document warning,Invalid Claim
+CLM00069,Valid Claim,0.9911,Valid Claim,No,,Valid Claim
+CLM00589,Invalid Claim,0.9822,Manual Review,Yes,Missing required documents,Invalid Claim
+CLM01459,Manual Review,0.992,Manual Review,No,,Manual Review
+CLM00919,Invalid Claim,0.9426,Invalid Claim,No,,Invalid Claim
+CLM01060,Manual Review,0.9637,Manual Review,Yes,Missing required documents,Manual Review
+CLM00567,Invalid Claim,0.9747,Invalid Claim,Yes,Warranty expired; Missing required documents,Invalid Claim
+CLM01124,Manual Review,0.9848,Manual Review,Yes,Missing required documents; Serial number verification issue,Manual Review
+CLM00124,Valid Claim,0.9907,Valid Claim,No,,Valid Claim
+CLM00916,Invalid Claim,0.9851,Invalid Claim,Yes,Fault not covered; Missing required documents,Invalid Claim
+CLM00889,Invalid Claim,0.9712,Invalid Claim,No,,Invalid Claim
+CLM01141,Manual Review,0.9939,Manual Review,No,,Manual Review
+CLM00909,Invalid Claim,0.9882,Invalid Claim,Yes,Warranty expired; Missing required documents,Invalid Claim
+CLM00228,Valid Claim,0.9925,Valid Claim,No,,Valid Claim
+CLM00246,Valid Claim,0.9912,Valid Claim,No,,Valid Claim
+CLM00592,Invalid Claim,0.9537,Invalid Claim,Yes,Fault not covered; Claim contradiction,Invalid Claim
+CLM01118,Manual Review,0.9856,Manual Review,Yes,Missing required documents; Serial number verification issue,Manual Review
+CLM00052,Valid Claim,0.9926,Valid Claim,No,,Valid Claim
+CLM01292,Manual Review,0.9916,Manual Review,Yes,Missing required documents; Serial number verification issue,Manual Review
+CLM00728,Invalid Claim,0.7966,Invalid Claim,Yes,Duplicate claim; Duplicate document warning,Invalid Claim
+CLM00158,Valid Claim,0.9909,Valid Claim,No,,Valid Claim
+CLM00624,Invalid Claim,0.9835,Invalid Claim,Yes,Unauthorized repair,Invalid Claim
+CLM00457,Valid Claim,0.9911,Valid Claim,No,,Valid Claim
+CLM01293,Manual Review,0.9938,Manual Review,Yes,Missing required documents; Repair authorization issue,Manual Review
+CLM00559,Invalid Claim,0.9735,Manual Review,Yes,Missing required documents,Invalid Claim
+CLM00466,Valid Claim,0.9911,Valid Claim,No,,Valid Claim
+CLM00342,Valid Claim,0.9929,Valid Claim,No,,Valid Claim
+CLM00011,Valid Claim,0.982,Valid Claim,No,,Valid Claim
+CLM00280,Valid Claim,0.9924,Valid Claim,No,,Valid Claim
+CLM01052,Manual Review,0.9925,Manual Review,Yes,Missing required documents; Serial number verification issue,Manual Review
+CLM00373,Valid Claim,0.9884,Valid Claim,No,,Valid Claim
+CLM01011,Manual Review,0.986,Manual Review,Yes,Missing required documents; Repair authorization issue,Manual Review
+CLM00292,Valid Claim,0.9952,Valid Claim,No,,Valid Claim
+CLM00341,Valid Claim,0.9925,Valid Claim,No,,Valid Claim
+CLM00360,Valid Claim,0.9895,Valid Claim,No,,Valid Claim
+CLM00299,Valid Claim,0.9717,Valid Claim,No,,Valid Claim
+CLM00059,Valid Claim,0.9926,Valid Claim,No,,Valid Claim
+CLM00331,Valid Claim,0.9895,Valid Claim,No,,Valid Claim
+CLM00618,Invalid Claim,0.9846,Invalid Claim,Yes,Unauthorized repair,Invalid Claim
+CLM00508,Invalid Claim,0.9972,Invalid Claim,Yes,Fault not covered; Serial number mismatch; Missing required documents,Invalid Claim
+CLM00173,Valid Claim,0.9884,Valid Claim,No,,Valid Claim
+CLM00878,Invalid Claim,0.8323,Invalid Claim,Yes,Duplicate claim; Duplicate document warning,Invalid Claim
+CLM00335,Valid Claim,0.9884,Valid Claim,No,,Valid Claim
+CLM01158,Manual Review,0.9819,Manual Review,Yes,Claim contradiction; Product/model inconsistency; Duplicate document warning,Manual Review
+CLM00651,Invalid Claim,0.9985,Invalid Claim,Yes,Warranty expired; Serial number mismatch; Missing required documents,Invalid Claim
+CLM01031,Manual Review,0.9752,Manual Review,Yes,Missing required documents,Manual Review
+CLM00537,Invalid Claim,0.9802,Invalid Claim,Yes,Warranty expired,Invalid Claim
+CLM00610,Invalid Claim,0.9879,Invalid Claim,Yes,Fault not covered; Missing required documents,Invalid Claim
+CLM01360,Manual Review,0.9676,Manual Review,Yes,Missing required documents,Manual Review
+CLM01468,Manual Review,0.9471,Manual Review,Yes,Missing required documents,Manual Review
+CLM01353,Manual Review,0.9872,Manual Review,Yes,Missing required documents; Repair authorization issue,Manual Review
+CLM00409,Valid Claim,0.9832,Valid Claim,No,,Valid Claim
+CLM01089,Manual Review,0.9827,Invalid Claim,Yes,Duplicate claim; Missing required documents; Repair authorization issue,Manual Review
+CLM00401,Valid Claim,0.9884,Valid Claim,No,,Valid Claim
+CLM00389,Valid Claim,0.9925,Valid Claim,No,,Valid Claim
+CLM00382,Valid Claim,0.9836,Valid Claim,No,,Valid Claim
+CLM00560,Invalid Claim,0.998,Invalid Claim,Yes,Duplicate claim; Missing required documents; Duplicate document warning,Invalid Claim
+CLM00361,Valid Claim,0.9847,Valid Claim,No,,Valid Claim
+CLM00851,Invalid Claim,0.6219,Invalid Claim,Yes,Serial number mismatch; Missing required documents; Claim contradiction,Invalid Claim
+CLM00552,Invalid Claim,0.9854,Invalid Claim,Yes,Unauthorized repair,Invalid Claim
+CLM00846,Invalid Claim,0.9975,Invalid Claim,Yes,Unauthorized repair; Missing required documents,Invalid Claim
+CLM00841,Invalid Claim,0.9892,Invalid Claim,No,,Invalid Claim
+CLM01452,Manual Review,0.9879,Manual Review,Yes,Claim contradiction; Product/model inconsistency,Manual Review
+CLM00127,Valid Claim,0.9869,Valid Claim,No,,Valid Claim
+CLM01419,Manual Review,0.988,Manual Review,Yes,Missing required documents; Repair authorization issue,Manual Review
+CLM00968,Invalid Claim,0.9994,Invalid Claim,Yes,Duplicate claim; Serial number mismatch; Missing required documents; Duplicate document warning,Invalid Claim
+CLM00113,Valid Claim,0.9869,Valid Claim,No,,Valid Claim
+CLM00494,Valid Claim,0.9884,Valid Claim,No,,Valid Claim
+CLM01008,Manual Review,0.9945,Manual Review,Yes,Claim contradiction; Product/model inconsistency,Manual Review
+CLM00810,Invalid Claim,0.998,Invalid Claim,Yes,Unauthorized repair; Missing required documents,Invalid Claim
+CLM01382,Manual Review,0.9858,Manual Review,Yes,Missing required documents; Serial number verification issue,Manual Review
+CLM00468,Valid Claim,0.9895,Valid Claim,No,,Valid Claim
+CLM00358,Valid Claim,0.9784,Valid Claim,No,,Valid Claim
+CLM00224,Valid Claim,0.9909,Valid Claim,No,,Valid Claim
+CLM00842,Invalid Claim,0.9965,Invalid Claim,Yes,Duplicate claim; Missing required documents; Duplicate document warning,Invalid Claim
+CLM00089,Valid Claim,0.991,Valid Claim,No,,Valid Claim
+CLM01067,Manual Review,0.9657,Manual Review,Yes,Missing required documents,Manual Review
+CLM00959,Invalid Claim,0.9802,Invalid Claim,Yes,Serial number mismatch,Invalid Claim
+CLM00275,Valid Claim,0.984,Valid Claim,No,,Valid Claim
+CLM00566,Invalid Claim,0.9983,Invalid Claim,Yes,Duplicate claim; Duplicate document warning,Invalid Claim
+CLM00631,Invalid Claim,0.9938,Invalid Claim,Yes,Serial number mismatch; Missing required documents,Invalid Claim
+CLM00901,Invalid Claim,0.9807,Manual Review,Yes,Missing required documents,Invalid Claim
+CLM00775,Invalid Claim,0.9872,Manual Review,Yes,Missing required documents,Invalid Claim
+CLM00807,Invalid Claim,0.9773,Invalid Claim,Yes,Warranty expired; Missing required documents,Invalid Claim
+CLM01341,Manual Review,0.988,Manual Review,Yes,Missing required documents; Repair authorization issue,Manual Review
+CLM00741,Invalid Claim,0.9725,Invalid Claim,Yes,Warranty expired,Invalid Claim
+CLM00241,Valid Claim,0.9951,Valid Claim,No,,Valid Claim
+CLM01110,Manual Review,0.9924,Manual Review,Yes,Missing required documents; Claim contradiction; Product/model inconsistency,Manual Review
+CLM01310,Manual Review,0.9933,Manual Review,Yes,Missing required documents; Serial number verification issue,Manual Review
+CLM00310,Valid Claim,0.991,Valid Claim,No,,Valid Claim
+CLM00141,Valid Claim,0.9926,Valid Claim,No,,Valid Claim
+CLM01228,Manual Review,0.9676,Manual Review,Yes,Missing required documents,Manual Review
+CLM00694,Invalid Claim,0.97,Invalid Claim,Yes,Fault not covered,Invalid Claim
+CLM00873,Invalid Claim,0.9844,Invalid Claim,Yes,Warranty expired,Invalid Claim
+CLM00669,Invalid Claim,0.9981,Invalid Claim,Yes,Warranty expired; Unauthorized repair; Missing required documents,Invalid Claim
+CLM01025,Manual Review,0.9657,Manual Review,Yes,Missing required documents,Manual Review
+CLM00118,Valid Claim,0.9926,Valid Claim,No,,Valid Claim
+CLM00692,Invalid Claim,0.9976,Invalid Claim,Yes,Duplicate claim; Duplicate document warning,Invalid Claim
+CLM01074,Manual Review,0.9277,Invalid Claim,Yes,Unauthorized repair; Missing required documents; Claim contradiction; Product/model inconsistency,Manual Review
+CLM00793,Invalid Claim,0.9593,Manual Review,Yes,Missing required documents,Invalid Claim
+CLM01059,Manual Review,0.9931,Manual Review,Yes,Missing required documents; Repair authorization issue,Manual Review
+CLM01484,Manual Review,0.9838,Manual Review,Yes,Missing required documents; Serial number verification issue,Manual Review
+CLM00613,Invalid Claim,0.8861,Invalid Claim,No,,Invalid Claim
+CLM00076,Valid Claim,0.9903,Valid Claim,No,,Valid Claim
+CLM00576,Invalid Claim,0.9928,Invalid Claim,Yes,Unauthorized repair; Missing required documents,Invalid Claim
+CLM00780,Invalid Claim,0.9722,Invalid Claim,Yes,Unauthorized repair; Product/model inconsistency,Invalid Claim
+CLM01192,Manual Review,0.9788,Manual Review,Yes,Missing required documents,Manual Review
+CLM00001,Valid Claim,0.9751,Valid Claim,No,,Valid Claim
+CLM01469,Manual Review,0.8925,Invalid Claim,Yes,Duplicate claim; Missing required documents,Manual Review
+CLM00293,Valid Claim,0.9907,Valid Claim,No,,Valid Claim
+CLM00504,Invalid Claim,0.9967,Invalid Claim,Yes,Unauthorized repair; Missing required documents,Invalid Claim
+CLM00004,Valid Claim,0.9725,Valid Claim,No,,Valid Claim
+CLM01389,Manual Review,0.9959,Manual Review,Yes,Missing required documents; Claim contradiction; Repair authorization issue,Manual Review
+CLM01358,Manual Review,0.9954,Manual Review,Yes,Missing required documents; Claim contradiction; Serial number verification issue,Manual Review
+CLM00569,Invalid Claim,0.8686,Invalid Claim,Yes,Serial number mismatch; Missing required documents,Invalid Claim
+CLM00416,Valid Claim,0.9907,Valid Claim,No,,Valid Claim
+CLM00192,Valid Claim,0.9911,Valid Claim,No,,Valid Claim
+CLM00658,Invalid Claim,0.9741,Invalid Claim,Yes,Fault not covered,Invalid Claim

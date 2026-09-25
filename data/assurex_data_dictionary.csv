@@ -1,0 +1,45 @@
+﻿ColumnName,Description,DataTypeOrRole
+ClaimID,Unique identifier for the warranty claim,Metadata
+ScenarioID,Synthetic scenario used to generate the claim,Metadata - do not use as ML feature
+CustomerID,Unique customer identifier,Identifier
+ProductID,Unique product identifier,Identifier
+ProductCategory,Product category,Categorical
+Brand,Product brand,Categorical
+ModelNumber,Product model number,Categorical
+SerialNumber,Product serial number,Identifier
+PurchaseDate,Date when product was purchased,Date
+ClaimDate,Date when warranty claim was submitted,Date
+FaultDate,Date when fault occurred,Date
+WarrantyDurationMonths,Warranty duration in months,Numerical
+WarrantyExpiryDate,Calculated warranty expiry date,Date
+WarrantyStatus,"Active, Nearing Expiry, or Expired",Categorical
+WarrantyRemainingDays,Remaining warranty period in days,Numerical
+ExtendedWarranty,Whether extended warranty exists,Binary
+FaultType,Reported fault type,Categorical
+DamageType,Type of damage or failure,Categorical
+FaultCovered,Whether fault is covered by warranty,Binary
+ClaimReportingWithinPeriod,Whether claim was reported within allowed period,Binary
+ReceiptAvailable,Purchase receipt availability,Binary
+WarrantyCardAvailable,Warranty card availability,Binary
+ProductImageAvailable,Product image availability,Binary
+SerialEvidenceAvailable,Serial-number evidence availability,Binary
+FaultEvidenceAvailable,Fault evidence availability,Binary
+RepairReportAvailable,Repair report availability,Binary
+PreviousRepair,Whether product was repaired before,Binary
+RepairCount,Number of previous repairs,Numerical
+RepairAuthorized,Whether previous repair was authorized,Categorical
+PreviousReplacement,Whether product was previously replaced,Binary
+ReplacementWithinWarranty,Whether replacement occurred within warranty,Categorical
+SerialNumberMatch,Serial number consistency result,Categorical
+ProductModelConsistent,Whether product model information is consistent,Binary
+DuplicateClaimIndicator,Possible duplicate claim indicator,Binary
+DocumentDuplicateIndicator,Possible duplicate document indicator,Binary
+ContradictionIndicator,Whether contradictory information was detected,Binary
+RequiredDocumentsComplete,Whether required claim documents are complete,Binary
+PurchaseProofAvailable,Whether purchase proof is available,Binary
+PriorClaimCount,Number of previous claims,Numerical
+ClaimAmount,Claimed amount,Numerical
+PreviousRepairCost,Cost of previous repair,Numerical
+OCRConfidence,Confidence of OCR extraction,Numerical
+ClaimSubmissionChannel,Channel used to submit claim,Categorical
+ClaimClass,"Target class: Valid Claim, Invalid Claim, Manual Review",TARGET

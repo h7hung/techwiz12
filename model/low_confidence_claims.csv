@@ -1,0 +1,2 @@
+﻿ClaimID,ClaimClass,PredictedClass,Confidence_Invalid_Claim,Confidence_Manual_Review,Confidence_Valid_Claim,TopConfidence,CorrectPrediction
+CLM01342,Manual Review,Manual Review,0.4736590427898924,0.5253342552749565,0.0010067019351511983,0.5253342552749565,True

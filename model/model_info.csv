@@ -1,0 +1,2 @@
+﻿ModelVersion,SelectedModel,TestAccuracy,TestPrecision,TestRecall,TestF1,TrainingRecords,ValidationRecords,TestRecords,RandomSeed
+AssureX-Python-ML-v1.0,Gradient Boosting,1.0,1.0,1.0,1.0,1050,225,225,20260924

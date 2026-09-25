@@ -1,0 +1,5 @@
+﻿Model,Validation_F1,Test_Accuracy,Test_Precision,Test_Recall,Test_F1,Notes
+Logistic Regression,0.9777688853319104,,,,,Individual test metrics not available
+Random Forest,0.9911095305832148,,,,,Individual test metrics not available
+Gradient Boosting,0.995555358015912,1.0,1.0,1.0,1.0,Test metrics from model_info.csv
+GTM,,,,,,Missing validation_predictions.csv; Missing validation_confusion_matrix.csv; Missing test_predictions.csv; Missing test_confusion_matrix.csv

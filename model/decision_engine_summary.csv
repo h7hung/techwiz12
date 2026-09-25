@@ -1,0 +1,25 @@
+﻿Metric,Category,Value
+Basic Metric,Total claims,225.0
+Basic Metric,Correct final decisions,209.0
+Basic Metric,Wrong final decisions,16.0
+Basic Metric,Final decision accuracy,0.9288888888888889
+Basic Metric,ML prediction accuracy,1.0
+Basic Metric,Rule-triggered claims,140.0
+Basic Metric,Low-confidence claims,1.0
+Confusion Matrix,Actual=Invalid Claim; Final=Invalid Claim,67.0
+Confusion Matrix,Actual=Invalid Claim; Final=Manual Review,8.0
+Confusion Matrix,Actual=Invalid Claim; Final=Valid Claim,0.0
+Confusion Matrix,Actual=Manual Review; Final=Invalid Claim,8.0
+Confusion Matrix,Actual=Manual Review; Final=Manual Review,67.0
+Confusion Matrix,Actual=Manual Review; Final=Valid Claim,0.0
+Confusion Matrix,Actual=Valid Claim; Final=Invalid Claim,0.0
+Confusion Matrix,Actual=Valid Claim; Final=Manual Review,0.0
+Confusion Matrix,Actual=Valid Claim; Final=Valid Claim,75.0
+Wrong Decision Reason,Claim contradiction,2.0
+Wrong Decision Reason,Duplicate claim,3.0
+Wrong Decision Reason,Low ML confidence,1.0
+Wrong Decision Reason,Missing required documents,15.0
+Wrong Decision Reason,Product/model inconsistency,1.0
+Wrong Decision Reason,Repair authorization issue,2.0
+Wrong Decision Reason,Serial number mismatch,1.0
+Wrong Decision Reason,Unauthorized repair,4.0

@@ -1,0 +1,35 @@
+ASSUREX FINAL EVALUATION REPORT
+======================================================================
+
+PYTHON ML MODEL COMPARISON
+----------------------------------------------------------------------
+              Model Validation_F1 Test_Accuracy Test_Precision Test_Recall Test_F1                                 Notes
+Logistic Regression      0.977769                                                  Individual test metrics not available
+      Random Forest       0.99111                                                  Individual test metrics not available
+  Gradient Boosting      0.995555           1.0            1.0         1.0     1.0      Test metrics from model_info.csv
+
+GTM VALIDATION RESULTS
+----------------------------------------------------------------------
+Metrics unavailable.
+
+GTM TEST RESULTS
+----------------------------------------------------------------------
+Metrics unavailable.
+
+DECISION ENGINE RESULTS
+----------------------------------------------------------------------
+Decision Engine accuracy: 0.9288888888888888
+Correct final decisions: 209
+Wrong final decisions: 16.0
+Low-confidence claims: 1.0
+
+IMPORTANT LIMITATIONS
+----------------------------------------------------------------------
+GTM limitations:
+- Missing validation_predictions.csv
+- Missing validation_confusion_matrix.csv
+- Missing test_predictions.csv
+- Missing test_confusion_matrix.csv
+Individual Python test metrics are only reported for the selected model when they exist in model_info.csv.
+This report summarizes existing outputs; it does not retrain or recreate GTM.
+No claim is made that GTM is better or worse than the Python ML models.
